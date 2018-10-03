@@ -420,8 +420,12 @@ p {
      100% { opacity: 1.0; }
      }
                             </style>
-                           <p class="blink_text">
-                            
+                           
+                            <h4 class="blink_text" style="color: red;">
+                                   @if(isset($already_check_in_message))
+                                   {{$already_check_in_message}}
+                                   @endif
+
                                    @if(isset($check_in_message))
                                    {{$check_in_message}}
                                    @endif
@@ -441,8 +445,7 @@ p {
                                    @if(isset($Break_off_message))
                                    {{$Break_off_message}}
                                    @endif
-                                   
-                           </p> 
+                            </h4>
                             <!-- <h2>Mark Attendance</h2> -->
                             <!-- <div id="clockbox" class="GetClock"></div>
                             <div class="clock" style="margin:2em;"></div>
@@ -462,7 +465,7 @@ p {
     <a href="{{url('office_expense')}}">Expense</a>
 </div>
  -->
-                    <p class="font-italic col-blue">please submit daily task report before check out.</p>
+                    <!-- <p class="font-italic col-blue">please submit daily task report before check out.</p> -->
                         </div>
                         
                         <div class="body" style="background: linear-gradient(to top,  #FDBD6A 0%,#FEBB64 20%,#FDB353 40%,#FFAA3D 60%,#FFA026 80%,#FE9814 100%); border-radius: 20px;">
@@ -586,7 +589,7 @@ function myfunction() {
                             
                         </div>
 </div>
- <p class="font-italic col-blue">NOTE: please mark attendance once a day. By clicking "Check in" again and again will not update your check in time but "Check out" will update on every click.</p>
+ <div style="align-content: left; max-width: 200px"><h4 style="color: red; cursor: pointer;" class="show-modal"> How to use?</h4></div>
 
                     </div>
 
@@ -595,7 +598,40 @@ function myfunction() {
             </div>  
 
         </div>
-
+    <div id="testmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="body">
+                            <div class="form-group form-float">
+                                <small><center class="font-italic col-cyan"> Rules and Policy</center></small>
+                                <br>
+                                <div class="form-group form-float font-12">
+                                    <div class="form-line">
+                                 <b>How to use?</b>
+                                    </div>
+                                    1: Please mark attendance everyday by clicking "check-in". by clicking again and again will not make any changes.<br>
+                                    2: At the end of each day don't forget to checkout by clicking "Check out".<br>
+                                    3: Please remember to submit task reports. Otherwise you can not check out.<br>
+                                    4: If not 3, attendance will be counted as absent.<br>
+                                    5: Break time already defined. (13:00-14:00). When you want to take break please press "Break On". Whenever came back, please press "Break Off".<br>
+                                    6: If you need early leave, click "Early Leave". Write reason and submit. if you don't want to come back after early leave kindly press "Check Out" also. otherwise absent will be count.
+                                    7: If you want to came back later so please "Check Out" as scheduled.
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
     </section>
 
 
@@ -630,6 +666,27 @@ function myfunction() {
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+  var show_btn=$('.show-modal');
+  var show_btn=$('.show-modal');
+  //$("#testmodal").modal('show');
+  
+    show_btn.click(function(){
+      $("#testmodal").modal('show');
+  })
+});
+
+$(function() {
+        $('#element').on('click', function( e ) {
+            Custombox.open({
+                target: '#testmodal-1',
+                effect: 'fadein'
+            });
+            e.preventDefault();
+        });
+    });
+    </script>
 </body>
 
 </html>

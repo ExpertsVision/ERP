@@ -161,20 +161,20 @@
                             <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="subject" class="form-control" name="minmaxlength" maxlength="100" minlength="3" required>
-                                        <label class="form-label">Subject</label>
+                                        <label class="form-label">Title</label>
                                     </div>
                                     <div class="help-info">Max. 100 characters</div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <textarea name="description" cols="30" rows="5" class="form-control no-resize" required="" aria-required="true"></textarea>
-                                        <label class="form-label">Description</label>
+                                        <label class="form-label">Details</label></label>
                                     </div>
                                 </div>
                                  <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="estimated_time" class="form-control" name="minmaxlength" min="0" max="999" required/>
-                                        <label class="form-label">Hours</label>
+                                        <label class="form-label">Estimated Hours</label>
                                     </div>
                                     <div class="help-info">(Ex: 2.5 or 10) Min. 1, Max. 3 characters</div>
                                 </div>

@@ -80,8 +80,8 @@ class AttendanceController extends Controller
       }
       else
       {
-     $message='Already Checked in.';
-       return view('home')->with('message', $message,'image_name',$image_name);
+     $already_check_in_message='Already Checked in.';
+       return view('Attendance.attendance')->with('already_check_in_message', $already_check_in_message,'image_name',$image_name);
      }
 }
 public function Break_on(Request $request)
@@ -92,6 +92,8 @@ public function Break_on(Request $request)
       $time = date("h:i");
       $date = date("Y-m-d"); 
       $recordexist = DB::table('Attendance')->where('Email', '=', $email)->where('Date', '=', $date)->first();
+      $check_out_already = DB::table('Attendance')->where('Email', '=', $email)->where('Date', '=', $date)->whereNull('Check_out_Time')->count();
+      // dd($check_out_already);
      
       if (is_null($recordexist)) 
       {
@@ -100,10 +102,17 @@ public function Break_on(Request $request)
         //  $check_out_message='You have Checked out.';
        return view('Attendance.attendance',compact('Break_on_message',$Break_on_message));
       }
-      else
+      elseif ($check_out_already>0)
       {
      DB::table('Attendance')->where('Email','=',$email)->where('Date', '=', $date)->update(['Break_on' => $time]);
        $Break_on_message='Your Break Time has started. please come back at 14:00.';
+        // return view('home')->with('message', $message);
+        //  $Break_on_message='Please check in first.'.$recordexist;
+       return view('Attendance.attendance',compact('Break_on_message',$Break_on_message));
+     }
+     else
+     {
+       $Break_on_message='Your Already Checked Out. Can not take break now.';
         // return view('home')->with('message', $message);
         //  $Break_on_message='Please check in first.'.$recordexist;
        return view('Attendance.attendance',compact('Break_on_message',$Break_on_message));
@@ -139,7 +148,8 @@ public function check_out(Request $request)
       $date = date("Y-m-d"); 
       $recordexist = DB::table('Attendance')->where('Email', '=', $email)->where('Date', '=', $date)->first();
       $report_check = DB::table('assign_tasks')->where('employee_id','=',$id)->whereNull('report')->count();
-      // dd($report_check);
+      $check_Break_off = DB::table('Attendance')->where('Email', '=', $email)->where('Date', '=', $date)->whereNull('Break_off')->count();
+      // dd($check_Break_off);
       if (is_null($recordexist)) 
       {
        $check_out_message='Please check in first.';
@@ -151,13 +161,17 @@ public function check_out(Request $request)
         $check_out_message='you have not submitted reports for today. Please submit report for each task.';
        return view('Attendance.attendance',compact('check_out_message',$check_out_message));
       }
-      else
+      elseif ($check_Break_off>0)
       {
-     DB::table('Attendance')->where('Email','=',$email)->where('Date', '=', $date)->update(['Check_out_Time' => $time]);
+     
+     $check_out_message='You did not Break off yet.';
+       return view('Attendance.attendance',compact('check_out_message',$check_out_message,'report_check',$report_check));
+     }
+     else
+     {
+      DB::table('Attendance')->where('Email','=',$email)->where('Date', '=', $date)->update(['Check_out_Time' => $time]);
      $check_out_message='Great. you have submitted all reports today. Checked out successfully.';
        return view('Attendance.attendance',compact('check_out_message',$check_out_message,'report_check',$report_check));
-       // $message='You have Checked out.';
-       //  return view('home')->with('message', $message);
      }
 }
 public function early_check_out(Request $request)

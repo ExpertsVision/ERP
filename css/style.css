@@ -7517,7 +7517,7 @@ fieldset[disabled] .form-control {
     white-space: nowrap;
     position: relative;
     border-bottom: 1px solid #e9e9e9;
-    background: url("/images/user-img-background.jpg") no-repeat no-repeat;
+    background: url("/images/user-back.png") no-repeat no-repeat;
     height: 135px; }
     .sidebar .user-info .image {
       margin-right: 12px;
@@ -7564,7 +7564,7 @@ fieldset[disabled] .form-control {
   .sidebar .menu {
     position: relative;
     overflow-y: auto;
-    height: 90vh; }
+    height: 40vh; }
     .sidebar .menu .list {
       list-style: none;
       padding-left: 0; }
@@ -7576,7 +7576,7 @@ fieldset[disabled] .form-control {
         font-weight: 600;
         padding: 8px 16px; }
       .sidebar .menu .list i.material-icons {
-        margin-top: 4px; }
+        margin-top: 14px; }
       .sidebar .menu .list .menu-toggle:after, .sidebar .menu .list .menu-toggle:before {
         position: absolute;
         top: calc(50% - 14px);

@@ -127,16 +127,20 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
-                                        <tr>
+                                        <tr class="font-14">
                                             <th>Task ID</th>
                                             <th>Emp. ID</th>
                                             <th>Project ID</th>
+                                            <th>Assigned Date</th>
                                             <th>Subject</th>
                                             <th>Description</th>
                                             <th>Est. Time</th></th>
                                              @if(Auth::user()->role =='HR Manager')
                                             <th>Points</th>
                                             <th>Report</th>
+                                            <th>Action</th>
+                                            <th>Report Date</th>
+                                            <th>Report Time</th>
                                             @endif
                                         </tr>
                                     </thead>
@@ -145,10 +149,11 @@
                                         @csrf -->
                                         @if(isset($view_all_tasks))
                                         @foreach ($view_all_tasks as $request)
-                                        <tr>
+                                        <tr class="font-12">
                                             <td>{{$request->assign_task_id}}</td>
                                             <td>{{$request->employee_id}}</td>
                                             <td>{{$request->project_id}}</td>
+                                            <td>{{$request->Assigned_Task_Date}}</td>
                                             <td>{{$request->subject}}</td>
                                             <td>{{$request->description}}</td>
                                             <td>{{$request->estimated_time}}</td>
@@ -174,8 +179,11 @@
                                                 <td>
                                                     <a href="{{url('submit_points')}}"><button type="submit" class="btn btn-warning waves-effect">Done</button></a> 
                                                 </td>
+
                                         </form>
                                             @endif
+                                             <td>{{$request->Report_Submission_Date}}</td>
+                                            <td>{{$request->Report_Submission_Time}}</td>
                                         </tr>
                                         @endforeach
                                         @endif
@@ -202,14 +210,16 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
-                                        <tr>
+                                        <tr class="font-14">
                                             <th>Task ID</th>
-                                            <th>Emp. ID</th>
                                             <th>Project ID</th>
+                                            <th>Assigned Date</th>
                                             <th>Subject</th>
                                             <th>Description</th>
                                             <th>Est. Time</th></th>
                                             <th>Points</th>
+                                           <!--  <th>Report Date</th>
+                                            <th>Report Time</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -217,19 +227,21 @@
                                         @csrf -->
                                         @if(isset($view_all_tasks_Employee))
                                         @foreach ($view_all_tasks_Employee as $request)
-                                        <tr>
+                                        <tr class="font-12">
                                             <td class='assign_id_pass_to_popup'>{{$request->assign_task_id}}</td>
-                                            <td>{{$request->employee_id}}</td>
                                             <td>{{$request->project_id}}</td>
+                                            <td>{{$request->Assigned_Task_Date}}</td>
                                             <td>{{$request->subject}}</td>
                                             <td>{{$request->description}}</td>
                                             <td>{{$request->estimated_time}}</td>
                                             <!-- <td>{{$request->points}}</td> -->
                                             @if($request->points=='')
                                             <td>
-                                                <button type="submit" id="report" class="btn btn-warning waves-effect show-modal">Report</button>
+                                               <button type="submit" id="report" class="btn btn-warning waves-effect show-modal">Report</button>
                                             </td>
                                             @else
+                                            <!-- <td>{{$request->Report_Submission_Date}}</td>
+                                            <td>{{$request->Report_Submission_Time}}</td> -->
                                             <td>{{$request->points}}</td>
                                             @endif                                        </tr>
                                         @endforeach

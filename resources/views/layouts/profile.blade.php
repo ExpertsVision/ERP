@@ -262,7 +262,7 @@ h1 {
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
-                                        <tr>
+                                        <tr class="font-14">
                                             <th>Date</th>
                                             <th>In Time</th>
                                             <th>Out Time</th>
@@ -276,7 +276,7 @@ h1 {
                                     <tbody>
                                         @if(isset($Mins_Late_show_modal))
                                         @foreach ($Mins_Late_show_modal as $request)
-                                        <tr>
+                                        <tr class="font-12">
                                             <td>{{$request->Date}}</td>
                                             <td>{{$request->Check_in_Time}}</td>
                                             <td>{{$request->Check_out_Time}}</td>

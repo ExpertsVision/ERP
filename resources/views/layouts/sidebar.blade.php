@@ -5,12 +5,12 @@
             <div class="user-info" style="background-image: url('../images/user-back.png');">
                 <div class="image">
                     @if(isset($image_name))
-                    <img src= "{{$image_name}}"width="48" height="48" alt="User" />
+                    <img src= "{{$image_name}}"width="90" height="90" alt="User" />
                     @endif
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
-                    <div class="email">{{ Auth::user()->email }}</div>
+                    <!-- <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
+                    <div class="email">{{ Auth::user()->email }}</div> -->
                     
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>

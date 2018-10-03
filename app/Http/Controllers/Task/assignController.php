@@ -12,6 +12,7 @@ use DB;
 use App\DepartmentHRs;
 use App\User;
 use Session;
+use Carbon\Carbon;
 
 class assignController extends Controller
 {
@@ -44,6 +45,11 @@ class assignController extends Controller
 }
  public function assign_tasks(Request $request)
 {  
+      // $date_time_now = Carbon::now();
+      date_default_timezone_set("Asia/Karachi");
+      $time = date("h:i");
+      $date = date("Y-m-d"); 
+      // dd($date_time_now);
       $employee_name = $request->get('employee_name');
       $project_name = $request->get('project_name');
       $subject = $request->get('subject');
@@ -54,7 +60,7 @@ class assignController extends Controller
       $proj_id = DB::table('projects')->select('project_id')->where('project_name','=', $project_name)->first();
       //dd($id);
       //DB::table('assign_tasks')->insert('employee_id', '=', $id);
-      DB::table('assign_tasks')->insert(array('employee_id' => $id->id,'project_id'=>$proj_id->project_id,'subject'=>$subject,'description'=>$description,'estimated_time'=>$estimated_time));
+      DB::table('assign_tasks')->insert(array('employee_id' => $id->id,'project_id'=>$proj_id->project_id,'Assigned_Task_Date'=>$date,'subject'=>$subject,'description'=>$description,'estimated_time'=>$estimated_time));
       // DB::table('assign_tasks')->insert(['employee_id'=>$id]);
 // DB::insert('insert into consumer(ManagerID,ConsumerName,Email,Phone,Address,  City,OperatingZone_ID,ConsumerTypeUsageID,ConsumerTypeBillingID,SystemID) values(?,?,?,?,?,?,?,?,?,?)',[$manager_id,$name,$email,$phone,$address,$city,$opertating_zone_id,$consu_typeuID,$consu_typebID,$system_id]);
 //DB::insert('insert into users (id, name) values (?, ?)', [1, 'Dayle']);

@@ -1,6 +1,6 @@
  <!-- Top Bar -->
     
-    <nav class="navbar" style="background-color: #BDC3C7;">
+    <nav class="navbar" style="background-color: transparent;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>

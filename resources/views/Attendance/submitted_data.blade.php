@@ -24,18 +24,34 @@
 
 
 <!-- <h1>Your email has been sent to HR Manager.</h1> -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <h4>{{$leave_type}}</h4>
 
 <br><strong>To,<br>HR Manager<br>Eveati(pvt) Ltd</strong>
 <br>
 Subject: <u><strong>{{$subject}}</strong></u>
-<br><p>{{$description}}</p>
-<div>Leave Period: {{$datefrom}} <b>-</b>{{$dateto}}</div>
+<div class="col-md-3">
+    <div class="align-justify">
+        <p class="align-justify">{{$description}}</p>
+    </div>
+</div>
+
+<!-- <div>Leave Period: {{$datefrom}} <b>-</b>{{$dateto}}</div> -->
+
 <footer>
 	Best Regards,<br>
 	{{{Auth::user()->name }}}
 	<br>
 </footer>
+<script language="javascript">
+ var today = new Date();
+ document.write(today);
+ </script>
 <div id="editor">
 
 </div>

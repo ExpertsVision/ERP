@@ -29,11 +29,14 @@ class submit_ReportController extends Controller
 }
 public function report_submitted(Request $request)
     {  
-        
+        date_default_timezone_set("Asia/Karachi");
+        $time = date("h:i A");
+        // dd($time);
+        $date = date("Y-m-d");
         $description = $request->input('description');
         $task_number = $request->input('task_number');
         // dd($points_txtbox);
-        DB::table('assign_tasks')->where('assign_task_id',$task_number)->update(['report' => $description]);
+        DB::table('assign_tasks')->where('assign_task_id',$task_number)->update(array('report' => $description,'Report_Submission_Date'=>$date,'Report_Submission_Time'=>$time));
         // return redirect()->route('Task.view_all');
         return redirect('view_all');
     }
